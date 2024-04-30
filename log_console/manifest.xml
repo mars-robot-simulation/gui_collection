@@ -1,0 +1,12 @@
+<package>
+    <description brief="log_console">
+	An small error (message) console based on the lib_manager and the main_gui libraray.
+   </description>
+	<maintainer>Malte Langosz/malte.langosz@dfki.de</maintainer>
+    <depend package="simulation/lib_manager" />
+    <depend package="simulation/data_broker" />
+    <depend package="simulation/cfg_manager" />
+    <depend package="simulation/gui_collection/main_gui" />
+    <depend package="qt4" optional="1" />
+    <tags>needs_opt</tags>
+</package>

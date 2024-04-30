@@ -1,0 +1,10 @@
+<package>
+    <description brief="main_gui">
+      The library provides a small core for a modular gui implementation.
+   </description>
+   <maintainer>Malte Langosz/malte.langosz@dfki.de</maintainer>
+   <depend package="simulation/lib_manager" />
+   <depend package="simulation/cfg_manager" />
+   <depend package="qt4" optional="1" />
+    <tags>needs_opt</tags>
+</package>

@@ -1,0 +1,11 @@
+<package>
+    <description brief="data_broker_gui">
+	The library provides a propertybrowser widget to set all registered data broker elements.
+   </description>
+	<maintainer>Malte Langosz/malte.langosz@dfki.de</maintainer>
+   <depend package="simulation/lib_manager" />
+   <depend package="simulation/cfg_manager" />
+   <depend package="simulation/data_broker" />
+   <depend package="simulation/gui_collection/main_gui" />
+    <tags>needs_opt</tags>
+</package>

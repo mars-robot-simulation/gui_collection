@@ -1,0 +1,16 @@
+<package>
+    <description brief="data_broker_plotter">
+	Plotting implementation for the data broker
+   </description>
+	<maintainer>Malte Langosz/malte.langosz@dfki.de</maintainer>
+    <depend package="simulation/lib_manager" />
+    <depend package="simulation/gui_collection/main_gui" />
+    <depend package="simulation/data_broker" />
+    <depend package="simulation/cfg_manager" />
+    <depend package="simulation/gui_collection/config_map_gui" />
+    <depend package="simulation/utils" />
+    <depend package="tools/configmaps" />
+    <depend package="eigen3" />
+    <depend package="qt4" optional="1" />
+    <tags>needs_opt</tags>
+</package>
