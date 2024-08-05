@@ -523,52 +523,74 @@ namespace mars {
 
     void MyQMainWindow::saveDockGeometry() {
       int flag = 0;
-      for(unsigned int j = 0; j < stDockWidgets.size(); j++) {
-        for(unsigned int i = 0; !flag && i < dockStates.size(); i++) {
-          if(stDockWidgets[j]->widget()->windowTitle() == dockStates[i].title) {
-            //fprintf(stderr, "found dock state: %s\n", stDockWidgets[j]->widget()->windowTitle().toStdString().c_str());
-            dockStates[i].floating = stDockWidgets[j]->isFloating();
-            if(!dockStates[i].floating) {
-              dockStates[i].area = dockWidgetArea(stDockWidgets[j]);
+      for(const auto& dockWidget: stDockWidgets)
+      {
+        if (!dockWidget->widget())
+        {
+          const auto msg = std::string{"MyQMainWindow::saveDockGeometry: got nullptr when accessing widget in stDockWidgets."};
+          throw std::logic_error{msg};
+        }
+
+        for(size_t i = 0; !flag && i < dockStates.size(); i++)
+        {
+          if(dockWidget->widget()->windowTitle() == dockStates[i].title)
+          {
+            //fprintf(stderr, "found dock state: %s\n", widget->windowTitle().toStdString().c_str());
+            dockStates[i].floating = dockWidget->isFloating();
+            if(!dockStates[i].floating)
+            {
+              dockStates[i].area = dockWidgetArea(dockWidget);
             }
-            dockStates[i].rect = stDockWidgets[j]->geometry();
+            dockStates[i].rect = dockWidget->geometry();
 
             flag = 1;
           }
         }
-        if(flag == 0) {
-          dockState justAdded = {stDockWidgets[j]->widget()->windowTitle(),
-                                 dockWidgetArea(stDockWidgets[j]),
-                                 stDockWidgets[j]->isFloating(),
-                                 stDockWidgets[j]->geometry()};
-          //fprintf(stderr, "add dock state: %s\n", stDockWidgets[j]->widget()->windowTitle().toStdString().c_str());
+        if(flag == 0)
+        {
+          dockState justAdded = {dockWidget->widget()->windowTitle(),
+                                 dockWidgetArea(dockWidget),
+                                 dockWidget->isFloating(),
+                                 dockWidget->geometry()};
+          //fprintf(stderr, "add dock state: %s\n", widget->windowTitle().toStdString().c_str());
           dockStates.push_back(justAdded);
         }
         flag = 0;
       }
       flag = 0;
-      for(unsigned int j = 0; j < dyDockWidgets.size(); j++) {
-        for(unsigned int i = 0; !flag && i < dockStates.size(); i++) {
-          if(dyDockWidgets[j]->widget()->windowTitle() == dockStates[i].title) {
-            dockStates[i].floating = dyDockWidgets[j]->isFloating();
-            if (!dockStates[i].floating) {
-              dockStates[i].area = dockWidgetArea(dyDockWidgets[j]);
+
+      for(const auto& dockWidget : dyDockWidgets)
+      {
+        if (!dockWidget->widget())
+        {
+          const auto msg = std::string{"MyQMainWindow::saveDockGeometry: got nullptr when accessing widget in dyDockWidgets."};
+          throw std::logic_error{msg};
+        }
+
+        for(size_t i = 0; !flag && i < dockStates.size(); i++)
+        {
+          if(dockWidget->widget()->windowTitle() == dockStates[i].title)
+          {
+            dockStates[i].floating = dockWidget->isFloating();
+            if (!dockStates[i].floating)
+            {
+              dockStates[i].area = dockWidgetArea(dockWidget);
             }
-            dockStates[i].rect = dyDockWidgets[j]->geometry();
+            dockStates[i].rect = dockWidget->geometry();
 
             flag = 1;
           }
         }
-        if(flag == 0) {
-          dockState justAdded = {dyDockWidgets[j]->widget()->windowTitle(),
-                                 dockWidgetArea(dyDockWidgets[j]),
-                                 dyDockWidgets[j]->isFloating(),
-                                 dyDockWidgets[j]->geometry()};
+        if(flag == 0)
+        {
+          dockState justAdded = {dockWidget->widget()->windowTitle(),
+                                 dockWidgetArea(dockWidget),
+                                 dockWidget->isFloating(),
+                                 dockWidget->geometry()};
           dockStates.push_back(justAdded);
         }
         flag = 0;
       }
-
     }
 
 
