@@ -77,11 +77,13 @@ namespace mars {
       //! Indicates if the window is being closed.
       int closing;
 
-      std::vector<dockState> getDockGeometry() {
+      std::vector<dockState> getDockGeometry()
+      {
         return dockStates;
       }
 
-      void setDockGeometry(std::vector<dockState> states) {
+      void setDockGeometry(std::vector<dockState> states)
+      {
         timerAllowed = false;
         dockStates = states;
         restoreDockGeometry();
