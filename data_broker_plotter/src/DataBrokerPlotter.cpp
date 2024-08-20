@@ -534,10 +534,10 @@ namespace data_broker_plotter2 {
     if(resourcesPath == "") {
       resourcesPath = MARS_DEFAULT_RESOURCES_PATH;
     }
-    std::string copyPath = resourcesPath + "/data_broker_plotter2/plot.py";
+    std::string copyPath = resourcesPath + "/data_broker_plotter/plot.py";
     std::string cmd = "cp " + copyPath + " " + exportPath;
     system(cmd.c_str());
-    copyPath = resourcesPath + "/data_broker_plotter2/gui.py";
+    copyPath = resourcesPath + "/data_broker_plotter/gui.py";
     cmd = "cp " + copyPath + " " + exportPath;
     system(cmd.c_str());
     plotLock.unlock();

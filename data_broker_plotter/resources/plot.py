@@ -33,9 +33,11 @@ lineStyles = ['-', 'k:', '-.', '--', '-o', '-^', '-v', '-^', '--v', 'k-', 'k--',
 mpl.rcParams['lines.linewidth'] = 1.5
 mpl.rcParams['axes.linewidth'] = 1
 mpl.rcParams['axes.labelsize'] = mpl.rcParams['axes.titlesize']
-mpl.rcParams['text.usetex'] = True
+#mpl.rcParams['text.usetex'] = True
 #mpl.rcParams['text.latex.preamble'] = [r"\usepackage[varg]{txfonts}"]
-mpl.rcParams['text.latex.preamble'] = [r"\usepackage{amsmath}"]
+#mpl.rcParams['text.latex.preamble'] = [r"\usepackage{amsmath}"]
+plt.rc('text', usetex=True)
+plt.rc('text.latex', preamble=r'\usepackage{amsmath}')
 black = '#222222'
 white = '#ffffff'
 mpl.rcParams['lines.color'] = black
@@ -56,7 +58,7 @@ def doPlot():
     fHeight = 5
     config = {}
     with open("config.yml", "r") as f:
-        config = yaml.load(f)
+        config = yaml.safe_load(f)
     if "_settings" in config:
         if "plotHeight" in config["_settings"]:
             fHeight = config["_settings"]["plotHeight"]
@@ -127,7 +129,7 @@ def doPlot():
             if show:
                 i += 1
             if not found:
-                print "found no config for: " + label
+                print("found no config for: " + label)
 
     arrData = []
 

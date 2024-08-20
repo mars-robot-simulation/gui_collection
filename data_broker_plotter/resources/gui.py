@@ -44,7 +44,7 @@ if not os.path.exists("config_backup.yml"):
 
 config = {}
 with open("config.yml", "r") as f:
-    config = yaml.load(f)
+    config = yaml.safe_load(f)
 config = collections.OrderedDict(sorted(config.items()))
 
 def handleSettings(config):
@@ -438,7 +438,7 @@ def exportFile(key, values, path, suffix, pruneX, pruneX2):
     newConfig = {}
     if os.path.exists(os.path.join(path, "config.yml")):
         with open(os.path.join(path, "config.yml")) as f:
-            newConfig = yaml.load(f)
+            newConfig = yaml.safe_load(f)
     if nKey in newConfig:
         print("  overwrite: " + nKey)
     newConfig[nKey] = values.copy()
@@ -607,7 +607,7 @@ else:
 guiConfig = {"x": 50, "y": 50, "width": 800, "height": 500, "scrollPosition": 0}
 if os.path.exists("gui_config.yml"):
     with open("gui_config.yml") as f:
-        guiConfig.update(yaml.load(f))
+        guiConfig.update(yaml.safe_load(f))
 
 window.setGeometry(guiConfig["x"], guiConfig["y"], guiConfig["width"], guiConfig["height"])
 area.verticalScrollBar().setValue(guiConfig["scrollPosition"])
