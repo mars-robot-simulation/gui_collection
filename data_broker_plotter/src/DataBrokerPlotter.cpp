@@ -9,6 +9,7 @@
 #include <QFileDialog>
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
 
 namespace data_broker_plotter2 {
 
@@ -290,7 +291,8 @@ namespace data_broker_plotter2 {
       }
       else if(key.find("Data") != std::string::npos) {
         plotLock.lock();
-        // todo: change already registerd data
+        // TODO: change already registerd data
+        std::cout << "Warning: Setting the data update rate here has no effect! To change it, change dbplotter2.yml after exiting the software." << std::endl;
         dataUpdateRate = atof(value.c_str());
         plotLock.unlock();
       }
