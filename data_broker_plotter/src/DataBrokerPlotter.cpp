@@ -546,7 +546,8 @@ namespace data_broker_plotter2 {
   }
 
   void DataBrokerPlotter::closeEvent(QCloseEvent *e) {
-    mainLib->destroyPlotWindow(this);
+      fprintf(stderr, "DataBrokerPlotter: got close Event!");
+      mainLib->destroyPlotWindow(this);
   }
 
   void DataBrokerPlotter::showPlot(Plot* plot) {

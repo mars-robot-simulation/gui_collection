@@ -111,7 +111,8 @@ namespace data_broker_plotter2 {
     for(it=toDelete.begin(); it!=toDelete.end(); ++it) {
       itMap = plotWindows.find((*it)->getName());
       if(itMap != plotWindows.end()) {
-        plotWindows.erase(itMap);
+          delete itMap->second;
+          plotWindows.erase(itMap);
       }
     }
     toDelete.clear();
@@ -126,7 +127,8 @@ namespace data_broker_plotter2 {
     //toDelete.push_back(plotWindow);
     auto itMap = plotWindows.find(plotWindow->getName());
     if(itMap != plotWindows.end()) {
-      plotWindows.erase(itMap);
+        delete itMap->second;
+        plotWindows.erase(itMap);
     }
   }
 
