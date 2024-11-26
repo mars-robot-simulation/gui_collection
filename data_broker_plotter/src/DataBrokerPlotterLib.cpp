@@ -127,7 +127,8 @@ namespace data_broker_plotter2 {
     //toDelete.push_back(plotWindow);
     auto itMap = plotWindows.find(plotWindow->getName());
     if(itMap != plotWindows.end()) {
-        delete itMap->second;
+        gui->removeDockWidget((void*)itMap->second, 0);
+        //delete itMap->second;
         plotWindows.erase(itMap);
     }
   }
