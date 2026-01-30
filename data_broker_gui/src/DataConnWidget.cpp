@@ -168,6 +168,9 @@ namespace mars {
 
     DataConnWidget::~DataConnWidget(void) {
       //fprintf(stderr, "\nDelete DataConnWidget\n");
+    }
+
+    DataConnWidget::cleanUp(void) {
       dataBroker->unregisterAsyncReceiver(this, "*", "*");
       dataBroker->unregisterTimedReceiver(this, "*", "*", "_REALTIME_");
       dataBroker->unregisterSyncReceiver(this, "data_broker", "newStream");

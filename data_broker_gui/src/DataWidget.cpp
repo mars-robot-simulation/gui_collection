@@ -81,10 +81,14 @@ namespace mars {
     }
 
     DataWidget::~DataWidget(void) {
-      dataBroker->unregisterAsyncReceiver(this, "*", "*");
-      dataBroker->unregisterTimedReceiver(this, "*", "*", "_REALTIME_");
-      dataBroker->unregisterSyncReceiver(this, "data_broker", "newStream");
-      libManager->releaseLibrary("data_broker");
+    }
+
+    void DataWidget::cleanUp()
+    {
+        dataBroker->unregisterAsyncReceiver(this, "*", "*");
+        dataBroker->unregisterTimedReceiver(this, "*", "*", "_REALTIME_");
+        dataBroker->unregisterSyncReceiver(this, "data_broker", "newStream");
+        libManager->releaseLibrary("data_broker");
     }
 
     void DataWidget::addParam(const DataInfo _info) {

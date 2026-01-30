@@ -95,6 +95,7 @@ namespace mars {
                      QWidget *parent = 0);
       ~DataConnWidget();
 
+      void cleanUp();
       void receiveData(const mars::data_broker::DataInfo &info,
                        const mars::data_broker::DataPackage &data_package,
                        int callbackParam);

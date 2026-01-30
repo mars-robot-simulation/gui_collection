@@ -83,6 +83,7 @@ namespace mars {
                        int callbackParam);
       //    void receiveAddProducer(const data_broker::data_info &info) {}
       //    void receiveRemoveProducer(const data_broker::data_info &info) {}
+      void cleanUp();
 
     protected:
       void closeEvent(QCloseEvent *event);

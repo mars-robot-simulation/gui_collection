@@ -99,6 +99,14 @@ namespace mars {
       if(cfg) libManager->releaseLibrary("cfg_manager");
       if(gui) libManager->releaseLibrary("main_gui");
       if(dataBroker) libManager->releaseLibrary("data_broker");
+      if(dataWidget)
+      {
+          dataWidget->cleanUp();
+      }
+      if(dataConnWidget)
+      {
+          dataConnWidget->cleanUp();
+      }
       //fprintf(stderr, "Delete MainDataGui\n");
     }
 
@@ -138,8 +146,16 @@ namespace mars {
     }
 
     void MainDataGui::destroyWindow(QWidget *w) {
-      if(w == dataWidget) dataWidget = NULL;
-      else if(w == dataConnWidget) dataConnWidget = NULL;
+      if(w == dataWidget)
+      {
+          dataWidget->cleanUp();
+          dataWidget = NULL;
+      }
+      else if(w == dataConnWidget)
+      {
+          dataConnWidget->cleanUp();
+          dataConnWidget = NULL;
+      }
     }
 
   } // end of namespace: data_broker_gui
