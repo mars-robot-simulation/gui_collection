@@ -1,7 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
 project(log_console)
 set(PROJECT_VERSION 1.0)
 set(PROJECT_DESCRIPTION "The library provides a console module.")
-cmake_minimum_required(VERSION 2.6)
 
 include(FindPkgConfig)
 

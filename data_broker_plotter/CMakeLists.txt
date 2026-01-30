@@ -1,7 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
 project(data_broker_plotter)
 set(PROJECT_VERSION 1.0)
 set(PROJECT_DESCRIPTION "Plot implementation for the DataBroker by using QCustomPlot.")
-cmake_minimum_required(VERSION 2.6)
 include(FindPkgConfig)
 
 find_package(lib_manager)
@@ -60,8 +60,6 @@ else (${USE_QT5})
 qt4_wrap_ui( SOURCES_UI_H ${SOURCES_UI})
 qt4_wrap_cpp ( QT_MOC_HEADER_SRC ${QT_MOC_HEADER} )
 endif (${USE_QT5})
-
-cmake_minimum_required(VERSION 2.6)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${QT_MOC_HEADER_SRC} ${SOURCES_UI_H} )
 

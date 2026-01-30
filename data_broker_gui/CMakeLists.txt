@@ -1,7 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
 project(data_broker_gui)
 set(PROJECT_VERSION 1.0)
 set(PROJECT_DESCRIPTION "The library provides a propertybrowser widget to set all registered data broker elements.")
-cmake_minimum_required(VERSION 2.6)
 
 include(FindPkgConfig)
 

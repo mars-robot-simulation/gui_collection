@@ -1,7 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
 project(lib_manager_gui)
 set(PROJECT_VERSION 1.0)
 set(PROJECT_DESCRIPTION "GUI for the LibManager")
-cmake_minimum_required(VERSION 2.6)
 include(FindPkgConfig)
 
 find_package(lib_manager)

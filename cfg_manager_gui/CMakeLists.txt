@@ -1,7 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
 project(cfg_manager_gui)
 set(PROJECT_VERSION 1.0)
 set(PROJECT_DESCRIPTION "The library provides a propertybrowser widget to set all registered parameter of the cfg_manager lib.")
-cmake_minimum_required(VERSION 2.6)
 
 include(FindPkgConfig)
 

@@ -1,7 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
 project(config_map_gui)
 set(PROJECT_VERSION 1.0)
 set(PROJECT_DESCRIPTION "The library provides a propertybrowser widget show and edit a config map.")
-cmake_minimum_required(VERSION 2.6)
 
 include(FindPkgConfig)
 
