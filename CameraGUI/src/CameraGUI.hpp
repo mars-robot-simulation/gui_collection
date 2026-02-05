@@ -8,11 +8,6 @@
 #include <string>
 
 namespace mars {
-
-  namespace graphics {
-    class GraphicsWidget;
-  }
-
   namespace plugins {
     namespace CameraGUI {
 

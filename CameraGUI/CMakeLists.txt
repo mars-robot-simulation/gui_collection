@@ -8,34 +8,13 @@ find_package(lib_manager)
 lib_defaults()
 define_module_info()
 
-include(CheckIncludeFileCXX)
-
-CHECK_INCLUDE_FILE_CXX("tr1/functional" USE_TR1)
-if(${USE_TR1})
-    ADD_DEFINITIONS(-DUSE_TR1)
-else(${USE_TR1})
-    ADD_DEFINITIONS(-DNO_TR1)
-endif()
-
-find_package(OpenSceneGraph REQUIRED osgManipulator osgViewer osgFX osgShadow osgParticle osgTerrain osgDB osgGA osgWidget osgText osgUtil)
-include_directories(${OPENSCENEGRAPH_INCLUDE_DIRS})
-link_directories(${OPENSCENEGRAPH_LIBRARY_DIRS})
-
-set (CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${OPENSCENEGRAPH_INCLUDE_DIRS})
-CHECK_INCLUDE_FILE_CXX("osg/Version" HAVE_OSG_VERSION_H)
-if(${HAVE_OSG_VERSION_H})
-    ADD_DEFINITIONS(-DHAVE_OSG_VERSION_H)
-endif()
-
 setup_qt()
 
 pkg_check_modules(PKGCONFIG REQUIRED
           lib_manager
           mars_interfaces
-          mars_graphics
           main_gui
           mars_core
-          config_map_gui
 )
 include_directories(${PKGCONFIG_INCLUDE_DIRS})
 link_directories(${PKGCONFIG_LIBRARY_DIRS})
@@ -48,15 +27,18 @@ include_directories(
 set(SOURCES 
 	src/CameraGUI.cpp
 	src/CameraWidget.cpp
+	src/Canvas.cpp
 )
 
 set(HEADERS
 	src/CameraGUI.hpp
+	src/Canvas.hpp
 	src/CameraWidget.hpp
 )
 
 set(QT_MOC_HEADER
 	src/CameraWidget.hpp
+	src/Canvas.hpp
 )
 
 if (${USE_QT5})

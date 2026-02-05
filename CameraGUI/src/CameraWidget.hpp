@@ -1,47 +1,50 @@
 #pragma once
 
+#include "Canvas.hpp"
+
 #include <main_gui/BaseWidget.h>
-#include <configmaps/ConfigData.h>
-#include <config_map_gui/DataWidget.h>
-#include <mars_graphics/wrapper/OSGHudElementStruct.h>
 #include <mars_interfaces/sim/ControlCenter.h>
-#include <mars_graphics/GraphicsWidget.h>
 #include <main_gui/GuiInterface.h>
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QComboBox>
 
-namespace mars{
-  namespace plugins {
-    namespace CameraGUI {
+namespace mars
+{
+    namespace plugins
+    {
+        namespace CameraGUI
+        {
 
-      class CameraWidget : public main_gui::BaseWidget {
+            class CameraWidget : public main_gui::BaseWidget
+            {
 
-        Q_OBJECT;
+                Q_OBJECT;
 
-      public:
-        CameraWidget(mars::interfaces::ControlCenter *control,
-                     mars::main_gui::GuiInterface *gui,
-                     QWidget *parent, const std::string &name);
-        ~CameraWidget();
+            public:
+                CameraWidget(mars::interfaces::ControlCenter *control,
+                             mars::main_gui::GuiInterface *gui,
+                             QWidget *parent, const std::string &name);
+                ~CameraWidget();
 
 
-      public slots:
-        void update();
-        void set(int);
-        void saveImage();
+            public slots:
+                void update();
+                void set(int);
+                void saveImage();
+                void timerEvent(QTimerEvent* event);
 
-      private:
-        osg::ref_ptr<graphics::OSGHudElementStruct> elem;
-        graphics::GraphicsWidget *gw;
-        QComboBox *windowIDs;
-        mars::interfaces::ControlCenter *control;
-        mars::main_gui::GuiInterface *gui;
-        unsigned long winID, currentID;
-        bool depthImage;
-      };
+            private:
+                QComboBox *windowIDs;
+                Canvas *canvas;
+                mars::interfaces::ControlCenter *control;
+                mars::main_gui::GuiInterface *gui;
+                unsigned long winID;
+                int currentID;
+                bool depthImage, initImage;
+            };
 
-    } // end of namespace CameraGUI
-  } // end of namespace plugins
+        } // end of namespace CameraGUI
+    } // end of namespace plugins
 } // end of namespace mars
